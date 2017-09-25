@@ -6,11 +6,14 @@
         die(header("Location:  $redir?info=2"));
         exit;
     }
+    if($_GET[info]==4){
+        die(header("Location:  $redir?info=4"));
+    }
 if($_GET[info]==4){
     die(header("Location:  $redir?info=4"));
 }
 if (isset($user) && isset($pass) && ($user!='') && ($pass!='')) {
-    session_start();    
+    session_start();
     session_destroy();
     $usu = trim($user);
     $login = stripslashes($usu);
@@ -30,8 +33,6 @@ if (isset($user) && isset($pass) && ($user!='') && ($pass!='')) {
             Header("Location: $redir?info=1");
             exit;
         }
-		print_r($usuario_datos['contrasena']);
-		print_r($password);
         if ($password != $usuario_datos['contrasena']) {
             Header("Location: $redir?info=1");
             exit;
@@ -45,6 +46,9 @@ if (isset($user) && isset($pass) && ($user!='') && ($pass!='')) {
         $_SESSION['usuario_perfil'] = $usuario_datos['Nivel'];
         $_SESSION['usuario_stilo']=$usuario_datos['Stilo'];
         $_SESSION['imgperfil']=$usuario_datos['Img_perfil'];
+        if($_SESSION['imgperfil']==""){
+            $_SESSION['imgperfil']="default.png";
+        }
         //Verificacion de los permisos de lectura escritura
         $pag = $_SERVER['PHP_SELF'];
         Header("Location: $pag");

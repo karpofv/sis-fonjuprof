@@ -1,8 +1,8 @@
 <?php
-    $ruta_base = "http://localhost/fonjuprof";
-    $redir = "http://localhost/fonjuprof/index.php";
+    $ruta_base = "http://localhost/sis-fonjuprof";
+    $redir = "http://localhost/sis-fonjuprof/index.php";
     $auth_table = "usuarios";
-    $img_perfil = "http://localhost/fonjuprof/assets/img/img_perfil";
+    $img_perfil = "http://localhost/sis-fonjuprof/assets/img/img_perfil";
 
 //Errores
     $info[0]="No se pudo conectar con la bd";

@@ -15,19 +15,7 @@
     <script src="<?php echo $ruta_base;?>/assets/js/plugins/toastr/toastr.min.js"></script>
     <!-- Tinycon -->
     <script src="<?php echo $ruta_base;?>/assets/js/plugins/tinycon/tinycon.min.js"></script>
+    <script src="<?php echo $ruta_base;?>/assets/js/plugins/confirm/jquery-confirm.js"></script>
     <script src="<?php echo $ruta_base;?>/assets/js/publics.js"></script>
-    <script>
-        $(document).ready(function() {
-            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.error('Administración de prestamos', 'Bienvenido a FONJUPROF');
-            }, 1300);
-        });
-</script>
 </body>
 </html>

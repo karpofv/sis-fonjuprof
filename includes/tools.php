@@ -202,14 +202,14 @@ class paraTodos
     | Esto es para llamar a la conexion en PDO que creamos
     |--------------------------------------------------------------------------
     */
-		$conexion = new Conexion();
-		$conectar = $conexion->obtenerConexionMy();
-		$sql = $consulta;
-		$preparar = $conectar->prepare($sql);
-		$preparar->execute();
-		$cuenta = $preparar->rowCount();
-		if ($cuenta > 0) { $si='True'; }
-		return $cuenta;
+        $conexion = new Conexion();
+        $conectar = $conexion->obtenerConexionMy();
+        $sql = $consulta;
+        $preparar = $conectar->prepare($sql);
+        $preparar->execute();
+        $cuenta = $preparar->rowCount();
+        if ($cuenta > 0) { $si='True'; }
+        return $cuenta;
     }
     public static function arrayConsultaPG($campos, $tablas, $consultas)
     {
@@ -258,6 +258,19 @@ class paraTodos
             }
         } else {
             return false;
+        }
+    }
+    public function UrlArchivoInf($idMenu) {
+        $Clases=paraTodos::arrayConsulta("Archivo", "sistema_accion_inf", "SubMenu=0");
+        return $Clases;
+    }
+    public function UrlClases($idMenu) {
+        $Clases = paraTodos::arrayConsulta("UrlClase", "sistema_clases", "(idMenu=0 Or idMenu=$idMenu)");
+        return $Clases;
+    }
+    public static function alerta($msg) {
+        if ($msg <> '') {
+            echo "<script>$.alert('$msg');</script>";
         }
     }
 }

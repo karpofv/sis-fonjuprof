@@ -19,6 +19,7 @@
 
     <link href="<?php echo $ruta_base;?>/assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo $ruta_base;?>/assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo $ruta_base;?>/assets/css/plugins/confirm/jquery-confirm.css" rel="stylesheet">    
 
 </head>
 

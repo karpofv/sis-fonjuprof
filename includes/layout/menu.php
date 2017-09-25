@@ -17,11 +17,8 @@
                              </span> <span class="text-muted text-xs block"><?php echo $_SESSION[usuario_tipo];?> <b class="caret"></b></span> </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="javascript:void(0)" onclick="controler('dmn=11&ver=1', 'verContenido')">Perfil</a></li>
+                            <li><a href="control.php?info=4">Salir</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">

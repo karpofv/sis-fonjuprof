@@ -6,6 +6,7 @@
         public function obtenerConexionMy() {
             try {
                 $conectarMYSQL = new PDO("mysql:host=$this->servidorMy;dbname=$this->dbMy;", $this->usuarioMy, $this->claveMy);
+                $conectarMYSQL->exec("set names utf8");                
                 return $conectarMYSQL;
             } catch (PDOException $e) {
                 return 'Error: ' . $e->getMessage();

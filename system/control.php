@@ -13,6 +13,10 @@
     $idMenu = $_POST[dmn];
     $idSubMenu = $_POST[ver];
     $act = $_POST[act];
+$Clases = paraTodos::UrlClases($idMenu);
+foreach ($Clases as $key) {
+    include_once("$key[UrlClase]");
+}
     if($act==""){
         $act=1;
     }
@@ -33,18 +37,17 @@
         $modelo = $rowenlace[$menusuf."modelo"];
         $jquery = $rowenlace[$menusuf."jquery"];
     }
-    if($modelo!=""){
+    if($modelo!="" and $_POST[actd]==""){
         include($modelo);
     }
     if($enlace!=""){
         include($enlace);
     }
-    if($jquery!=""){
+    if($jquery!="" and $_POST[actd]==""){
         ?>
     <script>
         <?php include($jquery);?>
     </script>
     <?php
-
     }
 ?>

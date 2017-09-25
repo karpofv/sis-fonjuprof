@@ -1,6 +1,7 @@
 function controler(xdata, xventana) {
     $.ajax({
-        url: 'control.php'
+        async: true
+        , url: 'control.php'
         , type: 'POST'
         , data: xdata
         , ajaxSend: $('#' + xventana).html(cargando)
@@ -9,4 +10,4 @@ function controler(xdata, xventana) {
         }
     });
 }
-var cargando = '<center><img style="margin-top: 10px;height:30px;width:30px;" src="../assets/img/cargando.gif" border="0"> Cargando...</center>';
+var cargando = '<center><img style="margin-top: 10px;height:40px;width:80px;" src="../assets/img/cargando.gif" border="0"> Cargando...</center>';
