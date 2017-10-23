@@ -1,8 +1,11 @@
 </div>
 </div>
 </div>
+
+    <script src="<?php echo $ruta_base; ?>/assets/js/plugins/datatables/jquery-1.12.4.js"></script>
+    <script src="<?php echo $ruta_base; ?>/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
 <!-- Mainly scripts -->
-    <script src="<?php echo $ruta_base;?>/assets/js/jquery-2.1.1.js"></script>
+
     <script src="<?php echo $ruta_base;?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo $ruta_base;?>/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="<?php echo $ruta_base;?>/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>

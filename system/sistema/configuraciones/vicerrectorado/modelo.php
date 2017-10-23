@@ -4,7 +4,7 @@
     $codigo = $_POST[codigo];
     $descripcion = $_POST[descripcion];
     if($editar==1 and $codigo=="" and $descripcion!=""){
-        $insertar = paraTodos::arrayInserte("vic_descripcion", "config_vicerrectorado", "'$descripcion'");
+        $insertar = paraTodos::arrayInserte("ubic_descripcion", "config_ubicacion", "'$descripcion'");
         if($insertar){
             paraTodos::alerta("Registro exitoso");
             $codigo="";
@@ -12,7 +12,7 @@
         }
     }
     if($editar==1 and $codigo!="" and $descripcion!=""){
-        $update = paraTodos::arrayUpdate("vic_descripcion='$descripcion'", "config_vicerrectorado", "vic_codigo=$codigo");
+        $update = paraTodos::arrayUpdate("ubic_descripcion='$descripcion'", "config_ubicacion", "ubic_codigo=$codigo");
         if($update){
             paraTodos::alerta("Actualización exitosa");
             $codigo="";
@@ -20,7 +20,7 @@
         }
     }
     if($eliminar==1 and $codigo!=""){
-        $delete = paraTodos::arrayDelete("vic_codigo=$codigo", "config_vicerrectorado");
+        $delete = paraTodos::arrayDelete("ubic_codigo=$codigo", "config_ubicacion");
         if($delete){
             paraTodos::alerta("Registro eliminado");
             $codigo="";
@@ -28,10 +28,10 @@
         }
     }
     if($editar==1 and $codigo!="" and $descripcion==""){
-        $consuldescrip = paraTodos::arrayConsulta("vic_descripcion", "config_vicerrectorado", "vic_codigo=$codigo");
+        $consuldescrip = paraTodos::arrayConsulta("ubic_descripcion", "config_ubicacion", "ubic_codigo=$codigo");
         foreach($consuldescrip as $row){
-            $descripcion=$row[vic_descripcion];
+            $descripcion=$row[ubic_descripcion];
         }
     }
-    $consuldescripcion = paraTodos::arrayConsulta("*", "config_vicerrectorado", "1=1");
+    $consuldescripcion = paraTodos::arrayConsulta("*", "config_ubicacion", "1=1");
 ?>

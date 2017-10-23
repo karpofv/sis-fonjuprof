@@ -49,9 +49,9 @@
                             foreach($consuldescripcion as $row){
                         ?>
                         <tr>
-                            <td><?php echo $row[vic_descripcion];?></td>
-                            <td><button class="btn btn-defaul" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $row[vic_codigo];?>&editar=1&ver=1', 'verContenido');">Editar</button></td>
-                            <td><button class="btn btn-warning" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $row[vic_codigo];?>&eliminar=1&ver=1', 'verContenido');">Eliminar</button></td>
+                            <td><?php echo $row[ubic_descripcion];?></td>
+                            <td><button class="btn btn-defaul" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $row[ubic_codigo];?>&editar=1&ver=1', 'verContenido');">Editar</button></td>
+                            <td><button class="btn btn-warning" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $row[ubic_codigo];?>&eliminar=1&ver=1', 'verContenido');">Eliminar</button></td>
                         </tr>
                         <?php
                             }

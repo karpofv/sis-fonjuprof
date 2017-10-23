@@ -20,7 +20,8 @@
     <link href="<?php echo $ruta_base;?>/assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo $ruta_base;?>/assets/css/style.css" rel="stylesheet">
     <link href="<?php echo $ruta_base;?>/assets/css/plugins/confirm/jquery-confirm.css" rel="stylesheet">    
-
+    <!-- Datatables -->
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

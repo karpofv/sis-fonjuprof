@@ -61,5 +61,5 @@
             $oferta = $row[col_cantidad];
         }
     }
-    $consuldescripcion = paraTodos::arrayConsulta("*", "prestamos_cola pc, config_vicerrectorado cv, prestamos p", "col_viccodigo=vic_codigo and col_prestcodigo=prest_codigo order by col_fecdesde desc");
+    $consuldescripcion = paraTodos::arrayConsulta("*", "prestamos_cola pc, config_ubicacion cv, prestamos p", "col_viccodigo=ubic_codigo and col_prestcodigo=prest_codigo order by col_fecdesde desc");
 ?>

@@ -1,7 +1,7 @@
 <?php
     /*Adaptacion solo para el sistema de fonjuprof por que no manejan varias instituciones*/
     $institucion = $_POST[institucion];
-    $cedula = $_SESSION[ci];
+    $cedula = $_POST[cedula];
     $razon = $_POST[razon];
     $rif = $_POST[rif];
     $codigo = $_POST[codigo];
@@ -24,9 +24,6 @@
     $eliminar = $_POST[eliminar];
     $opcion = $_POST[opcion];
     $actd = $_POST[actd];
-    /*Se busca el codigo del usuario en la tabla clientes*/
-    $consultacodigo = paraTodos::arrayConsulta("cli_codigo", "clientes", "cli_cedula=$cedula");
-    $codigo = $consultacodigo[0][cli_codigo];
     /*Opciones de modificacon sin recarga completa*/
     if($actd!=""){
         if($actd==1){
@@ -50,13 +47,31 @@
     }
     /*Datos personales*/
     if($opcion=="DP"){
+        /*INSERTAR*/
+        if($editar==1 and $codigo==""){
+            $insertar=paraTodos::arrayInserte("cli_razon, cli_rif, cli_cedula, cli_fecnac, cli_nombres, cli_apellidos, cli_telefono, cli_direccion, cli_correo", "clientes", "'$razon', '$rif', '$cedula', '$fecnac', '$nombre','$apellidos', '$telefono', '$direccion', '$correo'");
+            if($insertar){
+                paraTodos::alerta("Registro exitoso");
+                $razon = "";
+                $rif = "";
+                $cedula = "";
+                $fecnac = "";
+                $nombre = "";
+                $apellidos = "";
+                $telefono = "";
+                $direccion = "";
+                $correo = "";                
+            }
+        }
         /*EDITAR*/
         if($editar==1 and $codigo!="" and $nombre!=""){
             $update = paraTodos::arrayUpdate("cli_razon='$razon', cli_rif='$rif', cli_cedula='$cedula', cli_fecnac='$fecnac', cli_nombres='$nombre', cli_apellidos='$apellidos', cli_telefono='$telefono', cli_direccion='$direccion', cli_correo='$correo'", "clientes", "cli_codigo=$codigo");
             if($update){
                 paraTodos::alerta("Actualización exitosa");
+                $codigo = "";
                 $razon = "";
                 $rif = "";
+                $cedula = "";
                 $fecnac = "";
                 $nombre = "";
                 $apellidos = "";
@@ -73,7 +88,6 @@
                 $codigo="";
             }
         }
-        paraTodos::arrayInserte("datac_cedula", "datosper_act", "$cedula");
     }
     if($opcion=="DB"){
         /*Se verifica si ya posee datos bancarios*/
@@ -93,7 +107,6 @@
                 $cuenta="";
             }
         }
-        paraTodos::arrayInserte("datac_cedula", "datosper_act", "$cedula");        
     }
     if($opcion=="DN"){
         /*Se verifica si ya posee datos nominales*/
@@ -119,10 +132,33 @@
                 $ingreso="";
             }
         }
-        paraTodos::arrayInserte("datac_cedula", "datosper_act", "$cedula");        
+    }
+    if($opcion=="DA"){
+        /*Se verifica si ya posee datos de acceso*/
+        $valida = paratodos::arrayConsultanum("*", "usuarios", "Cedula=$cedula");
+        if($valida>0){
+            $update = paraTodos::arrayUpdate("Usuario='$usuariouser', contrasena='$passworduser', Nivel=$niveluser","usuarios", "Cedula=$cedula");
+            if($update){
+                paraTodos::alerta("Actualización exitosa");
+                $usuariouser="";
+                $passworduser="";                
+                $niveluser="";                
+                $cedula="";
+            }
+        } else {
+            paraTodos::alerta($niveluser);
+            $inserte = paraTodos::arrayInserte("Cedula, Usuario, contrasena, Nivel, Tipo", "usuarios", "$cedula, '$usuariouser', '$passworduser', $niveluser, 'Empleado'");
+            if($inserte){
+                paraTodos::alerta("Registro exitoso");
+                $usuariouser="";
+                $passworduser="";                
+                $niveluser="";                
+                $cedula="";
+            }
+        }
     }
         /*MOSTRAR DATOS PERSONALES*/
-        if($codigo!="" and $nombre==""){
+        if($editar==1 and $codigo!="" and $nombre==""){
             $consulta = paraTodos::arrayConsulta("*", "clientes", "cli_codigo=$codigo");
             $razon = $consulta[0][cli_razon];
             $rif = $consulta[0][cli_rif];
@@ -135,23 +171,26 @@
             $correo = $consulta[0][cli_correo];
         }
         /*MOSTRAR DATOS BANCARIOS*/
-        if($codigo!="" and $cuenta==""){
-            $datosban = paraTodos::arrayConsulta("*", "cliente_banco, config_banco", "clientb_bancodigo=ban_codigo and clientb_clicodigo=$codigo");
+        if($editar==1 and $codigo!="" and $cuenta==""){
+            $datosban = paraTodos::arrayConsulta("*", "cliente_banco", "clientb_clicodigo=$codigo");
             $selbanco = $datosban[0][clientb_bancodigo];
             $cuenta = $datosban[0][clientb_cuenta];
-            $bancoprint = $datosban[0][ban_descripcion];
         }
         /*MOSTRAR DATOS NOMINALES*/
-        if($codigo!="" and $nomina==""){
-            $datosnom = paraTodos::arrayConsulta("*", "cliente_nomina, config_nomina, config_ubicacion", "clienn_ubiccodigo=ubic_codigo and clienn_nomcodigo=nom_codigo and clienn_clicodigo=$codigo");
+        if($editar==1 and $codigo!="" and $nomina==""){
+            $datosnom = paraTodos::arrayConsulta("*", "cliente_nomina", "clienn_clicodigo=$codigo");
             $institucion= $datosnom[0][clienn_instcodigo];
             $ubica= $datosnom[0][clienn_ubiccodigo];
             $nomina= $datosnom[0][clienn_nomcodigo];
-            $nominaprint= $datosnom[0][nom_descripcion];
             $condicion= $datosnom[0][clienn_condcodigo];
             $ingreso= $datosnom[0][clienn_fecingreso];
-            $vicerrectorado= $datosnom[0][ubic_descripcion];
             
+        }
+        /*MOSTRAR DATOS DE ACCESO*/
+        if($editar==1 and $codigo!="" and $usuariouser==""){
+            $datosacc = paraTodos::arrayConsulta("*", "usuarios", "Cedula=$cedula");
+            $usuariouser= $datosacc[0][Usuario];
+            $niveluser= $datosacc[0][Nivel];
         }
     $consulta = paraTodos::arrayConsulta("*", "clientes", "1=1");
 ?>

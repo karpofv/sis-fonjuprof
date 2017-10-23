@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#codigo').val()+'&descripcion='+$('#descripcion').val()+'&amortizacion='+$('#amortizacion').val()+'&limite='+$('#limite').val()+'&cuotas='+$('#cuotas').val()+'&interes='+$('#interes').val()+'&editar=1&ver=1', 'verContenido'); return false;">
+                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&seltipoamort='+$('#seltipoamort').val()+'&selprest='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&editar=1&ver=1', 'verContenido'); return false;">
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="control-label" for="selprest">Tipo de prestamo</label>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Monto a solicitar</label>
-                            <input type="number" min="0" step="any" class="form-control" id="txtmonto" required>
+                            <input type="number" min="0" step="any" class="form-control" id="txtmonto" onKeyUp="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&ver=1&act=20&actd=2','')" required>
                         </div>
                     </div>
                     <div class="row">

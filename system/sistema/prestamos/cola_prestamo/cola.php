@@ -26,7 +26,7 @@
                             <select class="form-control" id="selvice" required>
                                 <option value="">Seleccione una opción</option>
                                 <?php
-                                    combos::CombosSelect("1", "$selvice", "*", "config_vicerrectorado", "vic_codigo", "vic_descripcion", "1=1 order by vic_descripcion");
+                                    combos::CombosSelect("1", "$selvice", "*", "config_ubicacion", "ubic_codigo", "ubic_descripcion", "1=1 order by ubic_descripcion");
                                 ?>
                             </select>
                         </div>
@@ -82,7 +82,7 @@
                         <tr>
                             <td><?php echo $row[col_fecdesde];?></td>
                             <td><?php echo $row[col_fechasta];?></td>
-                            <td><?php echo $row[vic_descripcion];?></td>
+                            <td><?php echo $row[ubic_descripcion];?></td>
                             <td><?php echo $row[prest_descripcion];?></td>
                             <td><?php echo $row[col_cantidad];?></td>
                             <td><button class="btn btn-defaul" onclick="controler('dmn=<?php echo $idMenu;?>&codigo=<?php echo $row[col_codigo];?>&editar=1&ver=1', 'verContenido');">Editar</button></td>
