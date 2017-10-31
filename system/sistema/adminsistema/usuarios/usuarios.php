@@ -77,10 +77,10 @@
                                     <?php echo $row[per_cedula];?>
                                 </td>
                                 <td class="text-center">
-                                    <?php echo utf8_decode($row[per_nombres]);?>
+                                    <?php echo utf8_decode($row[Nombre]);?>
                                 </td>
                                 <td class="text-center">
-                                    <?php echo utf8_decode($row[per_apellidos]);?>
+                                    <?php echo utf8_decode($row[Apellido]);?>
                                 </td>
                                 <td class="text-center">
                                     <?php echo utf8_decode($row[Usuario]);?>

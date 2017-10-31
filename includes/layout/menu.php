@@ -1,8 +1,16 @@
 <?php
-    $consuldatospersonales = paraTodos::arrayConsulta("*", "persona", "per_cedula=$_SESSION[ci]");
-    foreach($consuldatospersonales as $datospersonales){
-        $nombre_perfil = $datospersonales[per_nombres];
-        $apellido_perfil = $datospersonales[per_apellidos];
+    if($_SESSION['usuario_tipo']==3){
+        $consuldatospersonales = paraTodos::arrayConsulta("*", "persona", "per_cedula=$_SESSION[ci]");
+        foreach($consuldatospersonales as $datospersonales){
+            $nombre_perfil = $datospersonales[per_nombres];
+            $apellido_perfil = $datospersonales[per_apellidos];
+        }
+    } else {        
+        $consuldatospersonales = paraTodos::arrayConsulta("*", "usuarios", "Cedula=$_SESSION[ci]");
+        foreach($consuldatospersonales as $datospersonales){
+            $nombre_perfil = $datospersonales[Nombre];
+            $apellido_perfil = $datospersonales[Apellido];
+        }
     }
 ?>
     <nav class="navbar-default navbar-static-side nav-overflow" role="navigation">
@@ -10,7 +18,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle img-perfil-menu" src="<?php echo $img_perfil."/".$_SESSION[imgperfil];?>" />
+                            <img alt="image" class="img-circle img-perfil-menu" src="<?php echo $img_perfil."/".$_SESSION[ci].".jpg?".rand();?>" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $apellido_perfil." ".$nombre_perfil;?></strong>

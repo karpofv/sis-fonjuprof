@@ -56,5 +56,5 @@ if($editar == 1 and $codigo !="" and $nombre==""){
         $tipo =$row[perf_codigo];
     }
 }
-$consulta = paraTodos::arrayConsulta("p.per_cedula, p.per_nombres, p.per_apellidos, pf.perf_descripcion, u.Usuario, u.id", "usuarios u, persona p, perfiles pf", "u.Cedula=p.per_cedula and u.Nivel=pf.perf_codigo and u.Nivel<>1");
+$consulta = paraTodos::arrayConsulta("Cedula, Nombre, Apellido, pf.perf_descripcion, u.Usuario, u.id", "usuarios u, perfiles pf", "u.Nivel=pf.perf_codigo and u.Nivel<>1");
 ?>

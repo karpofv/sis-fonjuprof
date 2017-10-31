@@ -2,7 +2,7 @@
     require("../includes/layout/head.php");
     require("../includes/layout/menu.php");
     require("../includes/layout/header.php");
-?>
+?>  
     <div id="verContenido">
         <div class="row  border-bottom white-bg dashboard-header">
             <div class="col-md-6">

@@ -22,7 +22,13 @@
     <link href="<?php echo $ruta_base;?>/assets/css/plugins/confirm/jquery-confirm.css" rel="stylesheet">    
     <!-- Datatables -->
     <link href="<?php echo $ruta_base; ?>/assets/css/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/datatables/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="<?php echo $ruta_base; ?>/assets/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">    
 </head>
 
 <body>
+    <div id="ventanaVer"></div>
     <div id="wrapper">

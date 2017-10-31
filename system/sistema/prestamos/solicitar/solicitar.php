@@ -1,5 +1,4 @@
-<link href="<?php echo $ruta_base; ?>/assets/css/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo $ruta_base; ?>/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+<div id="resultado"></div>
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -10,11 +9,11 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&seltipoamort='+$('#seltipoamort').val()+'&selprest='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&editar=1&ver=1', 'verContenido'); return false;">
+                <form class="form-horizontal" method="post" action="javascript:void(0)" onsubmit="controler('dmn=<?php echo $idMenu;?>&seltipoamort='+$('#seltipoamort').val()+'&selprest='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&editar=1&ver=1', 'verContenido',''); return false;">
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="control-label" for="selprest">Tipo de prestamo</label>
-                            <select class="form-control" id="selprest" onchange="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#selprest').val()+'&ver=1&act=20&actd=1','lblimite')" required>
+                            <select class="form-control" id="selprest" onchange="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#selprest').val()+'&ver=1&act=20&actd=1','lblimite','')" required>
                                 <option value="">Seleccione una opción</option>
                                 <?php
                                     combos::CombosSelect("1", $selprest, "prest_codigo, prest_descripcion", "prestamos", "prest_codigo", "prest_descripcion", "1=1 order by prest_descripcion")
@@ -26,7 +25,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Monto a solicitar</label>
-                            <input type="number" min="0" step="any" class="form-control" id="txtmonto" onKeyUp="controler('dmn=<?php echo $idMenu;?>&codigo='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&ver=1&act=20&actd=2','')" required>
+                            <input type="number" min="0" step="any" class="form-control" id="txtmonto" onkeyup="controler('dmn=<?php echo $idMenu;?>&selprest='+$('#selprest').val()+'&txtmonto='+$('#txtmonto').val()+'&ver=1&act=20&actd=2','resultado','')" required>
                         </div>
                     </div>
                     <div class="row">
@@ -73,8 +72,9 @@
                             foreach($consuldescripcion as $row){
                         ?>
                         <tr>
-                            <td><?php echo $row[sol_fecha];?></td>
-                            <td><?php echo $row[sol_prestcodigo];?></td>
+                            <td><?php echo paratodos::convertDate($row[sol_fecha]);?></td>
+                            <td><?php echo $row[prest_descripcion];?></td>
+                            <td><?php echo $row[amort_descripcion];?></td>
                             <td><?php echo number_format($row[sol_monto],2);?></td>
                             <td><?php echo $row[st_descripcion];?></td>
                         </tr>

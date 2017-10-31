@@ -10,9 +10,9 @@
     require("../includes/combos.php");
     require("clases/class.menu.php");
 
-    $idMenu = $_POST[dmn];
-    $idSubMenu = $_POST[ver];
-    $act = $_POST[act];
+    $idMenu = $_REQUEST[dmn];
+    $idSubMenu = $_REQUEST[ver];
+    $act = $_REQUEST[act];
 $Clases = paraTodos::UrlClases($idMenu);
 foreach ($Clases as $key) {
     include_once("$key[UrlClase]");

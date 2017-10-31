@@ -193,7 +193,7 @@
                                         <td id="eliminartd<?php echo $idSubMenuP; ?>" class="CeldaRecojeDatos" height="20">
                                             <?php
                                     if ($accPermisos['S']==1 AND $accPermisos['I']==1 AND $accPermisos['U']==1 AND $accPermisos['D']==1) { ?>
-                                                <a title="<?php echo 'Seleccionar '.$menu.'('.$submenu1.')'; ?>" onclick="controler('act=3&ver=2&dmn=<?php echo $idMenu;?>&idsubmenupp=<?php echo $idSubMenuP; ?>&accE=<?php echo $accE; ?>,permiso=1&submenu=<?php echo $submenuID; ?>&menus=<?php echo $idmenus; ?>&idperfil=<?php echo $_POST[idperfil]; ?>','eliminartd<?php echo $idSubMenuP; ?>');  return false;" href="javascript:void(0);">
+                                                <a title="<?php echo 'Seleccionar '.$menu.'('.$submenu1.')'; ?>" onclick="controler('act=3&ver=2&dmn=<?php echo $idMenu;?>&idsubmenupp=<?php echo $idSubMenuP; ?>&accE=<?php echo $accE; ?>&permiso=1&submenu=<?php echo $submenuID; ?>&menus=<?php echo $idmenus; ?>&idperfil=<?php echo $_POST[idperfil]; ?>','eliminartd<?php echo $idSubMenuP; ?>');  return false;" href="javascript:void(0);">
                                                     <?php echo $psubMenu4; ?>
                                                 </a>
                                                 <?php

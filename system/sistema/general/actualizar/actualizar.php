@@ -8,11 +8,15 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"  title="Edita tu foto de perfil">
                                     <i class="fa fa-wrench"></i>
                                 </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="javascript:void(0)" onclick="controler('dmn=<?php echo $idMenu?>&act=2&ver=1','ventanaVer','')">Cambiar Foto</a>
+                                    </li>
+                                </ul>
                             </div>                            
                         </div>
                         <div>
                             <div class="ibox-content no-padding border-left-right">
-                                <img alt="image" class="img-responsive" src="<?php echo $img_perfil."/".$_SESSION['imgperfil'];?>">
+                                <img alt="image" class="img-responsive" src="<?php echo $img_perfil."/".$_SESSION[ci].".jpg?".rand();?>">
                             </div>
                             <div class="ibox-content profile-content">
                                 <h4><strong><?php echo $apellido." ".$nombre;?></strong></h4>
